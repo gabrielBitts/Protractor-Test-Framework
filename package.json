@@ -1,0 +1,18 @@
+{
+  "main": "index.js",
+  "version": "1.0.0",
+  "name": "mercadolivrejavascript",
+  "description": "Simple test suit and config for protractor",
+  "scripts": {
+    "test": "protractor e2e/config.js"
+  },
+  "author": "gabrielBitts",
+  "license": "ISC",
+  "dependencies": {
+    "jasmine": "^3.5.0",
+    "jasmine-spec-reporter": "^4.2.1",
+    "protractor": "^5.4.3",
+    "protractor-jasmine2-html-reporter": "0.0.7",
+    "rimraf": "^3.0.2"
+  }
+}
