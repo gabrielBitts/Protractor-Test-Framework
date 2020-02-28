@@ -1,18 +1,28 @@
 {
-  "main": "index.js",
-  "version": "1.0.0",
-  "name": "mercadolivrejavascript",
-  "description": "Simple test suit and config for protractor",
-  "scripts": {
-    "test": "protractor e2e/config.js"
-  },
-  "author": "gabrielBitts",
-  "license": "ISC",
-  "dependencies": {
-    "rimraf": "^3.0.2",
-    "jasmine": "^3.5.0",
-    "protractor": "^5.4.3",
-    "jasmine-spec-reporter": "^4.2.1",
-    "protractor-jasmine2-html-reporter": "0.0.7"
-  }
+	"main": "index.js",
+	"version": "1.0.0",
+	"name": "mercadolivrejavascript",
+	"description": "Simple test suit and config for protractor",
+	"scripts": {
+		"wd": "webdriver-manager",
+		"test": "protractor e2e/config.js",
+		"wd:update": "webdriver-manager update --ignore_ssl"
+	},
+	"author": "gabrielBitts",
+	"license": "ISC",
+	"dependencies": {
+		"rimraf": "^3.0.2",
+		"jasmine": "^3.5.0",
+		"grunt-cli": "^1.3.2",
+		"protractor": "^5.4.3",
+		"jasmine-spec-reporter": "^4.2.1",
+		"protractor-jasmine2-html-reporter": "0.0.7"
+	},
+	"devDependencies": {
+		"grunt": "^1.0.4",
+		"load-grunt-tasks": "^5.1.0",
+		"grunt-contrib-jshint": "^2.1.0",
+		"grunt-protractor-runner": "^5.0.0",
+		"grunt-protractor-webdriver": "^0.2.5"
+	}
 }
