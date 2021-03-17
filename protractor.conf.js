@@ -1,34 +1,51 @@
-var { SpecReporter } = require('jasmine-spec-reporter');
+var SpecReporter = require('jasmine-spec-reporter').SpecReporter;
 var Jasmine2HtmlReporter = require('protractor-jasmine2-html-reporter');
 const specsPath = 'e2e/specs/';
 
 exports.config = {
-	multiCapabilities: [
-		{
-			browserName: 'firefox'
-		},
-		{
-			browserName: 'chrome',
-			chromeOptions: {
-				args: [ 'start-maximized' ]
-			}
-		},
-		{
-			browserName: 'chrome',
-			chromeOptions: {
-				args: [ '--headless', '--disable-gpu', 'start-maximized' ]
-			}
+	capabilities: {
+		browserName: 'chrome',
+		chromeOptions: {
+			args: [ 'start-maximized' ]
 		}
-	],
-	seleniumAddress: 'http://localhost:4444/wd/hub',
-	suites: {
-		search: [ `${specsPath}todo-spec.js` ]
 	},
+
+	framework: 'jasmine2',
+	jasmineNodeOpts: {
+		showColors: true,
+		print: function () {
+		},
+		isVerbose: true
+	},
+	// multiCapabilities: [
+	// 	{
+	// 		browserName: 'firefox'
+	// 	},
+	// 	{
+	// 		browserName: 'chrome',
+	// 		chromeOptions: {
+	// 			args: [ 'start-maximized' ]
+	// 		}
+	// 	},
+	// 	{
+	// 		browserName: 'chrome',
+	// 		chromeOptions: {
+	// 			args: [ '--headless', '--disable-gpu', 'start-maximized' ]
+	// 		}
+	// 	}
+	// ],
+
+	seleniumAddress: 'http://localhost:4444/wd/hub',
+	specs: [ 
+		`${specsPath}todo-spec.js`
+	],
 
 	onPrepare: function() {
 		beforeAll(function() {
-			let rimraf = require('rimraf');
-			rimraf('e2e/reports');
+			const rimraf = require('rimraf');
+			rimraf('e2e/reports', function(){
+				console.log('Reports reiniciados')
+			});
 		});
 		jasmine.getEnv().addReporter(
 			new Jasmine2HtmlReporter({
@@ -40,14 +57,12 @@ exports.config = {
 				takeScreenshotsOnlyOnFailures: true
 			}),
 			new SpecReporter({
-				spec: {
-					displayStacktrace: true,
-					displaySuiteNumber: true,
-					displaySpecDuration: true,
-					displayFailuredSpec: true,
-					displayFailuresSummary: true
-				}
-			})
+				displayStacktrace: 'all',
+				displayFailuresSummary: 'all',
+				displayFailuredSpec: 'all',
+				displaySuiteNumber: 'all',
+				displaySpecDuration: 'all'
+			}),
 		);
 	},
 	maxInstances: 2
