@@ -9,6 +9,8 @@ exports.config = {
 			args: [ 'start-maximized' ]
 		}
 	},
+	
+	directConnect: true,
 
 	framework: 'jasmine2',
 	jasmineNodeOpts: {
@@ -37,7 +39,7 @@ exports.config = {
 
 	seleniumAddress: 'http://localhost:4444/wd/hub',
 	specs: [ 
-		`${specsPath}todo-spec.js`
+		`${specsPath}todo-spec.ts`
 	],
 
 	onPrepare: function() {
@@ -57,11 +59,11 @@ exports.config = {
 				takeScreenshotsOnlyOnFailures: true
 			}),
 			new SpecReporter({
-				displayStacktrace: 'all',
-				displayFailuresSummary: 'all',
-				displayFailuredSpec: 'all',
-				displaySuiteNumber: 'all',
-				displaySpecDuration: 'all'
+				displayStacktrace: true,
+				displayFailuresSummary: true,
+				displayFailuredSpec: true,
+				displaySuiteNumber: true,
+				displaySpecDuration: true
 			}),
 		);
 	},
