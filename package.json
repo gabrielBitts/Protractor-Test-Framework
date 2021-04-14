@@ -8,7 +8,7 @@
 		"testConf": "protractor protractor.conf.js",
 		"wd:update": "webdriver-manager update --ignore_ssl",
 		"wd:start": "webdriver-manager start",
-		"test": "concurrently \"wd:start\" \"testConf\""
+		"test": "protractor protractor.conf.js"
 	},
 	"author": "gabrielBitts",
 	"license": "ISC",
